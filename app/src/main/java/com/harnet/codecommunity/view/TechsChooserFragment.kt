@@ -7,16 +7,20 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import com.harnet.codecommunity.R
 import com.harnet.codecommunity.databinding.TechsChooserFragmentBinding
+import com.harnet.codecommunity.model.Technology
 import com.harnet.codecommunity.viewModel.TechsChooserViewModel
 import com.lorentzos.flingswipe.SwipeFlingAdapterView
 
 class TechsChooserFragment : Fragment() {
     private lateinit var dataBinding: TechsChooserFragmentBinding
     private lateinit var viewModel: TechsChooserViewModel
+
+    var arrayAdapter: ArrayAdapter<String>? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,13 +35,23 @@ class TechsChooserFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         viewModel.refresh()
-
         observeViewModel()
+    }
 
+    private fun observeViewModel() {
+        viewModel.mTechsList.observe(viewLifecycleOwner, Observer {techsList ->
+            Log.i("Technologies", "observeViewModel: $techsList")
+            //get only techs names
+            addSwipeFlingAdapter(techsList.map { it.name })
+        })
+    }
+
+    private fun addSwipeFlingAdapter(techsNamesList: List<String>) {
         //add the view via xml or programmatically
         val flingContainer = dataBinding.swipeCardsFrame
+
+        arrayAdapter = context?.let { ArrayAdapter(it, R.layout.item_tech, R.id.tech_name, techsNamesList) }
 
 
 //        al = new ArrayList < String >();
@@ -46,7 +60,7 @@ class TechsChooserFragment : Fragment() {
 //        al.add("python");
 //        al.add("java");
 //
-//        //choose your favorite adapter
+        //choose your favorite adapter
 //        arrayAdapter = new ArrayAdapter < String >(this, R.layout.item, R.id.helloText, al);
 //
 //        //set the listener and the adapter
@@ -90,11 +104,5 @@ class TechsChooserFragment : Fragment() {
 //                makeToast(MyActivity.this, "Clicked!");
 //            }
 //        });
-    }
-
-    private fun observeViewModel(){
-        viewModel.mTechsList.observe(viewLifecycleOwner, Observer {
-            Log.i("Technologies", "observeViewModel: $it")
-        })
     }
 }
