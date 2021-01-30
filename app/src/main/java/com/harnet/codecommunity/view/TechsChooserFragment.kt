@@ -2,11 +2,13 @@ package com.harnet.codecommunity.view
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import com.harnet.codecommunity.R
 import com.harnet.codecommunity.databinding.TechsChooserFragmentBinding
 import com.harnet.codecommunity.viewModel.TechsChooserViewModel
@@ -29,6 +31,10 @@ class TechsChooserFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        viewModel.refresh()
+
+        observeViewModel()
 
         //add the view via xml or programmatically
         val flingContainer = dataBinding.swipeCardsFrame
@@ -84,5 +90,11 @@ class TechsChooserFragment : Fragment() {
 //                makeToast(MyActivity.this, "Clicked!");
 //            }
 //        });
+    }
+
+    private fun observeViewModel(){
+        viewModel.mTechsList.observe(viewLifecycleOwner, Observer {
+            Log.i("Technologies", "observeViewModel: $it")
+        })
     }
 }
