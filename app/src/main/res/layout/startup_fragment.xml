@@ -1,13 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".view.StartupFragment">
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Hello" />
+        tools:context=".view.StartupFragment"
+        android:orientation="vertical">
 
-</FrameLayout>
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="@dimen/startup_logo_width"
+            android:layout_height="@dimen/startup_logo_height"
+            android:layout_margin="@dimen/startup_logo_margin"
+            android:src="@drawable/code_community"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/startup_app_logo" />
+
+        <Button
+            android:id="@+id/login_btn"
+            android:layout_width="@dimen/btn_standard_width"
+            android:layout_height="@dimen/btn_standard_height"
+            android:text="@string/startup_btn_login"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+        <Button
+            android:id="@+id/signUp_btn"
+            android:layout_width="@dimen/btn_standard_width"
+            android:layout_height="@dimen/btn_standard_height"
+            android:text="@string/startup_btn_sugnup"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</layout>

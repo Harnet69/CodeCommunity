@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Code Community</string>
+    <string name="startup_btn_login">Log in</string>
+    <string name="startup_btn_sugnup">Sign Up</string>
+    <string name="startup_app_logo">Application logo</string>
 </resources>
