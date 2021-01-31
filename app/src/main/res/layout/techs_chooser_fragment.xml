@@ -3,15 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".view.TechsChooserFragment">
-
         <com.lorentzos.flingswipe.SwipeFlingAdapterView
             android:id="@+id/swipeCards_frame"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/purple_200"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -19,7 +15,5 @@
             app:rotation_degrees="15.5">
 
         </com.lorentzos.flingswipe.SwipeFlingAdapterView>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

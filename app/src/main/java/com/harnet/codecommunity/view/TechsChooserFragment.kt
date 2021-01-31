@@ -1,5 +1,6 @@
 package com.harnet.codecommunity.view
 
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -42,7 +43,6 @@ class TechsChooserFragment : Fragment() {
 
     private fun observeViewModel() {
         viewModel.mTechsList.observe(viewLifecycleOwner, Observer { techsList ->
-            Log.i("Technologies", "observeViewModel: $techsList")
             //get only techs names
             addSwipeFlingAdapter(techsList.map { it.name } as ArrayList<String>)
         })
@@ -54,14 +54,21 @@ class TechsChooserFragment : Fragment() {
 
         //choose your favorite adapter
         arrayAdapter =
-            context?.let { ArrayAdapter(it, R.layout.item_tech, R.id.tech_name, techsNamesList) }
+            context?.let {
+                ArrayAdapter(it, R.layout.item_tech, R.id.tech_name, techsNamesList)
+            }
 
 //        //set the listener and the adapter
         flingContainer.adapter = arrayAdapter
+
+        flingContainer.setBackgroundColor(0xFFFFFFFF.toInt())
+
+        arrayAdapter?.notifyDataSetChanged()
+
         flingContainer.setFlingListener(object : SwipeFlingAdapterView.onFlingListener {
             override fun removeFirstObjectInAdapter() {
                 // this is the simplest way to delete an object from the Adapter (/AdapterView)
-                Log.d("LIST", "removed object!");
+                Log.d("Technologies", "removed object!");
                 techsNamesList.removeAt(0);
                 arrayAdapter?.notifyDataSetChanged();
             }
