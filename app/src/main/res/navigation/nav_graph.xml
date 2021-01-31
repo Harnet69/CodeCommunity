@@ -3,11 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/techsChooserFragment">
+    app:startDestination="@id/startupFragment">
 
     <fragment
         android:id="@+id/techsChooserFragment"
         android:name="com.harnet.codecommunity.view.TechsChooserFragment"
         android:label="techs_chooser_fragment"
         tools:layout="@layout/techs_chooser_fragment" />
+    <fragment
+        android:id="@+id/startupFragment"
+        android:name="com.harnet.codecommunity.view.StartupFragment"
+        android:label="startup_fragment"
+        tools:layout="@layout/startup_fragment" />
 </navigation>
