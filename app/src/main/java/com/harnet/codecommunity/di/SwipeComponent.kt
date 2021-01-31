@@ -4,6 +4,6 @@ import com.harnet.codecommunity.view.TechsChooserFragment
 import dagger.Component
 
 @Component
-interface SwipeCardsHelperComponent {
+interface SwipeComponent {
     fun inject(techsChooserFragment: TechsChooserFragment)
 }

@@ -9,10 +9,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.harnet.codecommunity.R
 import com.harnet.codecommunity.databinding.TechsChooserFragmentBinding
-import com.harnet.codecommunity.di.DaggerSwipeCardsHelperComponent
-import com.harnet.codecommunity.model.Swiperable
-import com.harnet.codecommunity.util.Swipe
-import com.harnet.codecommunity.util.SwipeTechs
+import com.harnet.codecommunity.di.DaggerSwipeComponent
+import com.harnet.codecommunity.model.SwipeTechs
 import com.harnet.codecommunity.viewModel.TechsChooserViewModel
 import javax.inject.Inject
 
@@ -20,7 +18,8 @@ class TechsChooserFragment : Fragment() {
     private lateinit var dataBinding: TechsChooserFragmentBinding
     private lateinit var viewModel: TechsChooserViewModel
 
-    private var swipeTechs: Swiperable = SwipeTechs()
+    @Inject
+    lateinit var swipeTechs: SwipeTechs
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,6 +30,7 @@ class TechsChooserFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(TechsChooserViewModel::class.java)
 
         // inject cards swiper helper
+        DaggerSwipeComponent.create().inject(this)
 
         return dataBinding.root
     }
@@ -42,7 +42,7 @@ class TechsChooserFragment : Fragment() {
     }
 
     private fun observeViewModel() {
-        viewModel.mTechsList.observe(viewLifecycleOwner,{ techsList ->
+        viewModel.mTechsList.observe(viewLifecycleOwner, { techsList ->
             context?.let {
                 swipeTechs.addSwipeFlingAdapter(
                     it,
