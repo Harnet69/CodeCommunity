@@ -7,8 +7,7 @@ import android.widget.Toast
 import com.harnet.codecommunity.R
 import com.lorentzos.flingswipe.SwipeFlingAdapterView
 
-abstract class Swiper{
-
+interface Swiperable {
     fun addSwipeFlingAdapter(
         context: Context,
         techsNamesList: ArrayList<String>,
@@ -44,11 +43,14 @@ abstract class Swiper{
 
             override fun onAdapterAboutToEmpty(p0: Int) {
                 // Ask for more data here
-                empty()
-                techsNamesList.add("XML $i")
-                arrayAdapter.notifyDataSetChanged()
-                Log.d("LIST", "notified")
-                i++
+                Log.i("SwipeTechs", "onAdapterAboutToEmpty: $p0")
+                if(p0 == 0){
+                    empty()
+                }
+//                techsNamesList.add("XML $i")
+//                arrayAdapter.notifyDataSetChanged()
+//                Log.d("LIST", "notified")
+//                i++
             }
 
             override fun onScroll(p0: Float) {
@@ -63,8 +65,8 @@ abstract class Swiper{
         }
     }
 
-    abstract fun swipeLeft()
-    abstract fun swipeRight()
-    abstract fun click()
-    abstract fun empty()
+    fun swipeLeft()
+    fun swipeRight()
+    fun click()
+    fun empty()
 }

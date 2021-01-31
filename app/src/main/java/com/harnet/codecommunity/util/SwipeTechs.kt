@@ -1,11 +1,11 @@
 package com.harnet.codecommunity.util
 
 import android.util.Log
-import com.harnet.codecommunity.model.Swiper
+import com.harnet.codecommunity.model.Swiperable
 
 const val TAG = "SwipeTechs"
 
-class SwipeTechs: Swiper() {
+class SwipeTechs: Swiperable {
     override fun swipeLeft() {
         Log.i(TAG, "swipeLeft: ")
     }

@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.harnet.codecommunity.R
 import com.harnet.codecommunity.databinding.TechsChooserFragmentBinding
 import com.harnet.codecommunity.di.DaggerSwipeCardsHelperComponent
+import com.harnet.codecommunity.model.Swiperable
 import com.harnet.codecommunity.util.Swipe
 import com.harnet.codecommunity.util.SwipeTechs
 import com.harnet.codecommunity.viewModel.TechsChooserViewModel
@@ -19,7 +20,7 @@ class TechsChooserFragment : Fragment() {
     private lateinit var dataBinding: TechsChooserFragmentBinding
     private lateinit var viewModel: TechsChooserViewModel
 
-    private var swipeTechs = SwipeTechs()
+    private var swipeTechs: Swiperable = SwipeTechs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
