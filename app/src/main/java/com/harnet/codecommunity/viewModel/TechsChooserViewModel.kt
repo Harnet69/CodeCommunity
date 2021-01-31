@@ -6,7 +6,7 @@ import com.harnet.codecommunity.model.Technology
 import kotlinx.coroutines.*
 
 class TechsChooserViewModel : ViewModel() {
-    val mTechsList = MutableLiveData<List<Technology>>()
+    val mTechsList = MutableLiveData<ArrayList<Technology>>()
     val coroutineScope = CoroutineScope(Dispatchers.IO)
 
     fun refresh() {
@@ -16,7 +16,7 @@ class TechsChooserViewModel : ViewModel() {
     private fun getTechsFromDb() {
         coroutineScope.launch {
             delay(1000L)
-            val techsList = mutableListOf<Technology>(
+            val techsList = arrayListOf<Technology>(
                 Technology(0, "PHP", 3),
                 Technology(1, "Java", 2),
                 Technology(2, "C#", 1),

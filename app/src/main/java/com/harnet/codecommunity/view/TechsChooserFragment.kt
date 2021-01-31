@@ -1,18 +1,18 @@
 package com.harnet.codecommunity.view
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.harnet.codecommunity.R
 import com.harnet.codecommunity.databinding.TechsChooserFragmentBinding
-import com.harnet.codecommunity.model.Technology
 import com.harnet.codecommunity.viewModel.TechsChooserViewModel
 import com.lorentzos.flingswipe.SwipeFlingAdapterView
 
@@ -20,7 +20,8 @@ class TechsChooserFragment : Fragment() {
     private lateinit var dataBinding: TechsChooserFragmentBinding
     private lateinit var viewModel: TechsChooserViewModel
 
-    var arrayAdapter: ArrayAdapter<String>? = null
+    private var arrayAdapter: ArrayAdapter<String>? = null
+    private var i = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,69 +41,57 @@ class TechsChooserFragment : Fragment() {
     }
 
     private fun observeViewModel() {
-        viewModel.mTechsList.observe(viewLifecycleOwner, Observer {techsList ->
+        viewModel.mTechsList.observe(viewLifecycleOwner, Observer { techsList ->
             Log.i("Technologies", "observeViewModel: $techsList")
             //get only techs names
-            addSwipeFlingAdapter(techsList.map { it.name })
+            addSwipeFlingAdapter(techsList.map { it.name } as ArrayList<String>)
         })
     }
 
-    private fun addSwipeFlingAdapter(techsNamesList: List<String>) {
+    private fun addSwipeFlingAdapter(techsNamesList: ArrayList<String>) {
         //add the view via xml or programmatically
         val flingContainer = dataBinding.swipeCardsFrame
 
-        arrayAdapter = context?.let { ArrayAdapter(it, R.layout.item_tech, R.id.tech_name, techsNamesList) }
-
-
-//        al = new ArrayList < String >();
-//        al.add("php");
-//        al.add("c");
-//        al.add("python");
-//        al.add("java");
-//
         //choose your favorite adapter
-//        arrayAdapter = new ArrayAdapter < String >(this, R.layout.item, R.id.helloText, al);
-//
+        arrayAdapter =
+            context?.let { ArrayAdapter(it, R.layout.item_tech, R.id.tech_name, techsNamesList) }
+
 //        //set the listener and the adapter
-//        flingContainer.setAdapter(arrayAdapter);
-//        flingContainer.setFlingListener(new SwipeFlingAdapterView . onFlingListener () {
-//            @Override
-//            public void removeFirstObjectInAdapter() {
-//                // this is the simplest way to delete an object from the Adapter (/AdapterView)
-//                Log.d("LIST", "removed object!");
-//                al.remove(0);
-//                arrayAdapter.notifyDataSetChanged();
-//            }
-//
-//            @Override
-//            public void onLeftCardExit(Object dataObject) {
-//                //Do something on the left!
+        flingContainer.adapter = arrayAdapter
+        flingContainer.setFlingListener(object : SwipeFlingAdapterView.onFlingListener {
+            override fun removeFirstObjectInAdapter() {
+                // this is the simplest way to delete an object from the Adapter (/AdapterView)
+                Log.d("LIST", "removed object!");
+                techsNamesList.removeAt(0);
+                arrayAdapter?.notifyDataSetChanged();
+            }
+
+            override fun onLeftCardExit(p0: Any?) {
+                //Do something on the left!
 //                //You also have access to the original object.
 //                //If you want to use it just cast it (String) dataObject
-//                Toast.makeText(MyActivity.this, "Left!", Toast.LENGTH_SHORT).show();
-//            }
-//
-//            @Override
-//            public void onRightCardExit(Object dataObject) {
-//                Toast.makeText(MyActivity.this, "Right!", Toast.LENGTH_SHORT).show();
-//            }
-//
-//            @Override
-//            public void onAdapterAboutToEmpty(int itemsInAdapter) {
-//                // Ask for more data here
-//                al.add("XML ".concat(String.valueOf(i)));
-//                arrayAdapter.notifyDataSetChanged();
-//                Log.d("LIST", "notified");
-//                i++;
-//            }
-//        });
-//
-//        // Optionally add an OnItemClickListener
-//        flingContainer.setOnItemClickListener(new SwipeFlingAdapterView . OnItemClickListener () {
-//            @Override
-//            public void onItemClicked(int itemPosition, Object dataObject) {
-//                makeToast(MyActivity.this, "Clicked!");
-//            }
-//        });
+                Toast.makeText(context, "Left!", Toast.LENGTH_SHORT).show();
+            }
+
+            override fun onRightCardExit(p0: Any?) {
+                Toast.makeText(context, "Right!", Toast.LENGTH_SHORT).show();
+            }
+
+            override fun onAdapterAboutToEmpty(p0: Int) {
+                // Ask for more data here
+                techsNamesList.add("XML $i")
+                arrayAdapter?.notifyDataSetChanged();
+                Log.d("LIST", "notified");
+                i++;
+            }
+
+            override fun onScroll(p0: Float) {
+            }
+        })
+
+        // Optionally add an OnItemClickListener
+        flingContainer.setOnItemClickListener(SwipeFlingAdapterView.OnItemClickListener { i, any ->
+            Toast.makeText(context, "Clicked!", Toast.LENGTH_SHORT).show()
+        })
     }
 }
