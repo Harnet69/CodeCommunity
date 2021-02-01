@@ -5,4 +5,7 @@
     <dimen name="startup_logo_margin">100dp</dimen>
     <dimen name="btn_standard_width">300dp</dimen>
     <dimen name="btn_standard_height">50dp</dimen>
+    <dimen name="btn_standard_text_size">20sp</dimen>
+    <dimen name="btn_standard_margin">5dp</dimen>
+    <dimen name="btn_standard_radius">50dp</dimen>
 </resources>
