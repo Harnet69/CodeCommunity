@@ -30,14 +30,14 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/signUp_btn"
             style="@style/StandardBtn"
             android:layout_width="@dimen/btn_standard_width"
             android:layout_height="@dimen/btn_standard_height"
+            app:cornerRadius="50dp"
             android:text="@string/startup_btn_sugnup"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+            android:textSize="@dimen/btn_standard_text_size"/>
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
