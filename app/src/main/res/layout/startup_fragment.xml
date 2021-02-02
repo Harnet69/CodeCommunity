@@ -36,7 +36,7 @@
             android:layout_width="@dimen/btn_standard_width"
             android:layout_height="@dimen/btn_standard_height"
             app:cornerRadius="50dp"
-            android:text="@string/startup_btn_sugnup"
+            android:text="@string/startup_btn_signUp"
             android:textSize="@dimen/btn_standard_text_size"/>
 
     </androidx.appcompat.widget.LinearLayoutCompat>
