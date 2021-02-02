@@ -58,6 +58,14 @@ dependencies {
     kapt 'com.google.dagger:dagger-compiler:2.31.2'
 
     implementation platform('com.google.firebase:firebase-bom:26.4.0')
+    // Firebase Realtime Database (Kotlin)
+    implementation 'com.google.firebase:firebase-database-ktx'
+    // Firebase Authentication (Kotlin)
+    implementation 'com.google.firebase:firebase-auth-ktx'
+    implementation 'com.firebaseui:firebase-ui-database:7.1.1'
+
+    // Needed to fix a dependency conflict with FirebaseUI'
+    implementation 'androidx.arch.core:core-runtime:2.1.0'
 
     // Add the dependencies for the desired Firebase products
     // https://firebase.google.com/docs/android/setup#available-libraries
@@ -66,5 +74,4 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 }
-
 apply plugin: 'com.google.gms.google-services'
