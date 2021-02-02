@@ -16,7 +16,7 @@ interface Swiperable {
         val arrayAdapter = ArrayAdapter(context, R.layout.item_tech, R.id.tech_name, techsNamesList)
         var i = 0
 
-        //        //set the listener and the adapter
+        //set the listener and the adapter
         flingContainer.adapter = arrayAdapter
         arrayAdapter.notifyDataSetChanged()
 

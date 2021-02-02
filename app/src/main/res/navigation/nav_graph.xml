@@ -14,5 +14,22 @@
         android:id="@+id/startupFragment"
         android:name="com.harnet.codecommunity.view.StartupFragment"
         android:label="startup_fragment"
-        tools:layout="@layout/startup_fragment" />
+        tools:layout="@layout/startup_fragment" >
+        <action
+            android:id="@+id/action_startupFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_startupFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.harnet.codecommunity.view.LoginFragment"
+        android:label="login_fragment"
+        tools:layout="@layout/login_fragment" />
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.harnet.codecommunity.view.SignUpFragment"
+        android:label="sign_up_fragment"
+        tools:layout="@layout/sign_up_fragment" />
 </navigation>

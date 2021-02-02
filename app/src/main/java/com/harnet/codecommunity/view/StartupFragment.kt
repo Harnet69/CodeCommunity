@@ -7,20 +7,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.Navigation
 import com.harnet.codecommunity.R
 import com.harnet.codecommunity.databinding.StartupFragmentBinding
-import com.harnet.codecommunity.viewModel.StartupViewModel
 
 class StartupFragment : Fragment() {
     private lateinit var dataBinding: StartupFragmentBinding
-    private lateinit var viewModel: StartupViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         dataBinding =  DataBindingUtil.inflate(inflater, R.layout.startup_fragment, container, false)
-        viewModel = ViewModelProvider(this).get(StartupViewModel::class.java)
 
         return dataBinding.root
     }
@@ -33,12 +31,14 @@ class StartupFragment : Fragment() {
 
     private fun onLogin(){
         dataBinding.loginBtn.setOnClickListener {
-            viewModel.logIn()
+            Navigation.findNavController(it).navigate(StartupFragmentDirections.actionStartupFragmentToLoginFragment())
         }
     }
 
     private fun onSignUp(){
-//        dataBinding.si
+        dataBinding.signUpBtn.setOnClickListener {
+            Navigation.findNavController(it).navigate(StartupFragmentDirections.actionStartupFragmentToSignUpFragment())
+        }
     }
 
 }
