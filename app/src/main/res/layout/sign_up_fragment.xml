@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <LinearLayout
-        android:id="@+id/login_block"
+        android:id="@+id/signUp_block"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/standard_block_margin"
@@ -15,7 +15,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/userName_LoginBlock"
+            android:id="@+id/userName_signUp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -34,7 +34,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/userEmail_LoginBlock"
+            android:id="@+id/userEmail_signUp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -50,7 +50,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/userPassword_LoginBlock"
+            android:id="@+id/userPassword_signUp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -67,14 +67,14 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/login_signUp_btn_LoginBlock"
+            android:id="@+id/signUp_btn_signUp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:layout_marginEnd="10dp"
             android:text="@string/btn_login_text"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/logIn_signUp_TextView_LoginBlock"
+            app:layout_constraintEnd_toStartOf="@+id/userPassword_signUp"
             app:layout_constraintTop_toTopOf="parent" />
 
     </LinearLayout>

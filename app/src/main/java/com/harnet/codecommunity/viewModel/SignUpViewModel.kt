@@ -10,4 +10,14 @@ class SignUpViewModel : ViewModel() {
 
     }
 
+    //add firebase
+    fun addFirebaseListener(){
+        firebaseAuth.addAuthStateListener(firebaseAuthListener)
+    }
+
+    //remove firebase
+    fun removeFirebaseListener(){
+        firebaseAuth.removeAuthStateListener(firebaseAuthListener)
+    }
+
 }
