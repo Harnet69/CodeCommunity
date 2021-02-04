@@ -21,7 +21,7 @@ class FormValidationHelper {
     // check if an email format is valid
     fun isValidEmail(textField: TextInputLayout): Boolean {
         if (Patterns.EMAIL_ADDRESS.matcher(textField.editText?.text.toString()).matches()) {
-        textField.error = null
+            textField.error = null
             return true
         }
         textField.error = "Format is not valid"
@@ -37,6 +37,21 @@ class FormValidationHelper {
             return true
         }
         textField.error = "3<=username length<=10"
+
+        return false
+    }
+
+    // check if a password is strong enough
+    fun isPasswordStrong(pswTextField: TextInputLayout): Boolean {
+        val passwordPattern = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&+=])(?=\\S+$).{4,}$"
+        val passwordMatcher = Regex(passwordPattern)
+        val password = pswTextField.editText?.text.toString()
+
+        if (passwordMatcher.find(password) != null && password.length >= 8) {
+            pswTextField.error = null
+            return true
+        }
+        pswTextField.error = "Password length >= 8 & contains: one digit, special char, upper case"
 
         return false
     }

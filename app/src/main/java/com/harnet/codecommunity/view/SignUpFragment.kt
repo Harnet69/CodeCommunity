@@ -68,6 +68,11 @@ class SignUpFragment : Fragment() {
 
         if (formValidationHelper.fieldIsEmpty(dataBinding.userPasswordSignUp)) {
             result = false
+        }else{
+            //TODO switch on production, disabled for easy testing
+//            if(!formValidationHelper.isPasswordStrong(dataBinding.userPasswordSignUp)){
+//                result = false
+//            }
         }
 
         return result
