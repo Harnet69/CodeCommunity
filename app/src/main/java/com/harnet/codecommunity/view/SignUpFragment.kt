@@ -53,14 +53,6 @@ class SignUpFragment : Fragment() {
     private fun isFormValid(): Boolean {
         var result = true
 
-        if (formValidationHelper.fieldIsEmpty(dataBinding.userNameSignUp)) {
-            result = false
-        }else{
-            if(!formValidationHelper.isUsernameLengthValid(dataBinding.userNameSignUp)) {
-                result = false
-            }
-        }
-
         if (formValidationHelper.fieldIsEmpty(dataBinding.userEmailSignUp)) {
             result = false
         } else {
