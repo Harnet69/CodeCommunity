@@ -3,6 +3,7 @@ package com.harnet.codecommunity.view
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -49,18 +50,25 @@ class SignUpFragment : Fragment() {
     private fun isFormValid(): Boolean {
         var result = true
 
-        if (formValidationHelper.isNotEmpty(dataBinding.userNameSignUp)) {
+        if (formValidationHelper.fieldIsEmpty(dataBinding.userNameSignUp)) {
             result = false
         }
 
-        if (formValidationHelper.isNotEmpty(dataBinding.userEmailSignUp)) {
+        if (!formValidationHelper.isValidEmail(dataBinding.userEmailSignUp)) {
             result = false
         }
 
-        if (formValidationHelper.isNotEmpty(dataBinding.userPasswordSignUp)) {
+        if (formValidationHelper.fieldIsEmpty(dataBinding.userEmailSignUp)) {
             result = false
+        } else {
+            if (!formValidationHelper.isValidEmail(dataBinding.userEmailSignUp)) {
+                result = false
+            }
         }
 
+        if (formValidationHelper.fieldIsEmpty(dataBinding.userPasswordSignUp)) {
+            result = false
+        }
         return result
     }
 
