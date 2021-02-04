@@ -43,11 +43,11 @@ class FormValidationHelper {
 
     // check if a password is strong enough
     fun isPasswordStrong(pswTextField: TextInputLayout): Boolean {
-        val passwordPattern = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&+=])(?=\\S+$).{4,}$"
-        val passwordMatcher = Regex(passwordPattern)
-        val password = pswTextField.editText?.text.toString()
+        val pswPattern = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&+=])(?=\\S+$).{4,}$"
+        val pswMatcher = Regex(pswPattern)
+        val psw = pswTextField.editText?.text.toString()
 
-        if (passwordMatcher.find(password) != null && password.length >= 8) {
+        if (pswMatcher.find(psw) != null && psw.length >= 8) {
             pswTextField.error = null
             return true
         }
