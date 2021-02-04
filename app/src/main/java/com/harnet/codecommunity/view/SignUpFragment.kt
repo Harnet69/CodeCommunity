@@ -1,26 +1,26 @@
 package com.harnet.codecommunity.view
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import android.text.TextUtils
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.harnet.codecommunity.R
 import com.harnet.codecommunity.databinding.SignUpFragmentBinding
+import com.harnet.codecommunity.di.DaggerFormValidatorHelperComponent
 import com.harnet.codecommunity.util.FormValidationHelper
 import com.harnet.codecommunity.viewModel.SignUpViewModel
+import javax.inject.Inject
 
 class SignUpFragment : Fragment() {
     private lateinit var viewModel: SignUpViewModel
     private lateinit var dataBinding: SignUpFragmentBinding
 
-    //TODO Inject it after implementation
-    private val formValidationHelper = FormValidationHelper()
+    @Inject
+    lateinit var formValidationHelper: FormValidationHelper
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,6 +28,9 @@ class SignUpFragment : Fragment() {
     ): View {
         viewModel = ViewModelProvider(this).get(SignUpViewModel::class.java)
         dataBinding = DataBindingUtil.inflate(inflater, R.layout.sign_up_fragment, container, false)
+
+        // inject form validator component
+        DaggerFormValidatorHelperComponent.create().inject(this)
 
         return dataBinding.root
     }

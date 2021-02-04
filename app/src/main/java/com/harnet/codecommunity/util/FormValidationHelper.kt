@@ -3,8 +3,9 @@ package com.harnet.codecommunity.util
 import android.text.TextUtils
 import android.util.Patterns
 import com.google.android.material.textfield.TextInputLayout
+import javax.inject.Inject
 
-class FormValidationHelper {
+class FormValidationHelper @Inject constructor() {
 
     //check is a field not empty
     fun fieldIsEmpty(textField: TextInputLayout): Boolean {
