@@ -31,5 +31,9 @@
         android:id="@+id/signUpFragment"
         android:name="com.harnet.codecommunity.view.SignUpFragment"
         android:label="sign_up_fragment"
-        tools:layout="@layout/sign_up_fragment" />
+        tools:layout="@layout/sign_up_fragment" >
+        <action
+            android:id="@+id/action_signUpFragment_to_techsChooserFragment"
+            app:destination="@id/techsChooserFragment" />
+    </fragment>
 </navigation>
