@@ -10,6 +10,7 @@ class SignUpViewModel : ViewModel() {
     private var firebaseAuthListener = FirebaseAuth.AuthStateListener {}
 
     val mIsUserCreated = MutableLiveData<Boolean>()
+    val mUserCreatedFailureMsg = MutableLiveData<String>()
 
     //add firebase
     fun addFirebaseListener(){
@@ -23,11 +24,14 @@ class SignUpViewModel : ViewModel() {
 
     // create new user
     fun createUser(userEmail: String, userPsw: String){
-//        firebaseAuth.createUserWithEmailAndPassword(userEmail, userPsw)
-//            .addOnCompleteListener {
-//
-//            }
-        mIsUserCreated.value = true
+        firebaseAuth.createUserWithEmailAndPassword(userEmail, userPsw)
+            .addOnCompleteListener {task ->
+                if(task.isSuccessful){
+                    mIsUserCreated.value = true
+                }else{
+                    mUserCreatedFailureMsg.value = task.exception?.localizedMessage.toString()
+                }
+            }
     }
 
 }
