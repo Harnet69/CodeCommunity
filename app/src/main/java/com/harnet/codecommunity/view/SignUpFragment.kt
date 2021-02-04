@@ -46,16 +46,16 @@ class SignUpFragment : Fragment() {
         }
     }
 
-    // validate input form
+    // validate signUp input form
     private fun isFormValid(): Boolean {
         var result = true
 
         if (formValidationHelper.fieldIsEmpty(dataBinding.userNameSignUp)) {
             result = false
-        }
-
-        if (!formValidationHelper.isValidEmail(dataBinding.userEmailSignUp)) {
-            result = false
+        }else{
+            if(!formValidationHelper.isUsernameLengthValid(dataBinding.userNameSignUp)) {
+                result = false
+            }
         }
 
         if (formValidationHelper.fieldIsEmpty(dataBinding.userEmailSignUp)) {
@@ -69,6 +69,7 @@ class SignUpFragment : Fragment() {
         if (formValidationHelper.fieldIsEmpty(dataBinding.userPasswordSignUp)) {
             result = false
         }
+
         return result
     }
 
