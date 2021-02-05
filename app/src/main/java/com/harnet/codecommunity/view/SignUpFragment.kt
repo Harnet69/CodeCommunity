@@ -91,13 +91,13 @@ class SignUpFragment : Fragment() {
         return result
     }
 
-    override fun onStart() {
-        super.onStart()
-        viewModel.addFirebaseListener()
-    }
-
-    override fun onStop() {
-        super.onStop()
-        viewModel.removeFirebaseListener()
-    }
+//    override fun onStart() {
+//        super.onStart()
+//        viewModel.addFirebaseListener()
+//    }
+//
+//    override fun onStop() {
+//        super.onStop()
+//        viewModel.removeFirebaseListener()
+//    }
 }
