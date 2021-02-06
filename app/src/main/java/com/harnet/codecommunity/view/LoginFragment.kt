@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.Navigation
 import com.harnet.codecommunity.viewModel.LoginViewModel
 import com.harnet.codecommunity.R
 import com.harnet.codecommunity.databinding.LoginFragmentBinding
@@ -60,6 +61,7 @@ class LoginFragment : Fragment() {
             if (it) {
                 //TODO redirect to an another fragment after login
                 Toast.makeText(context, "User logged in", Toast.LENGTH_LONG).show()
+                Navigation.findNavController(dataBinding.loginBlock).navigate(LoginFragmentDirections.actionLoginFragmentToProfileFragment())
             }
         })
 

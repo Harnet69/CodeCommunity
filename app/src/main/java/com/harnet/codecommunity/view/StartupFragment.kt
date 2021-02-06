@@ -16,13 +16,11 @@ class StartupFragment : Fragment() {
     private lateinit var dataBinding: StartupFragmentBinding
 
     private var firebaseAuth = FirebaseAuth.getInstance()
-    // listens for a state firebase authentication. Called when user created
+    // listens for a state firebase authentication
     private var firebaseAuthListener = FirebaseAuth.AuthStateListener {
+        //check if user have been logged already
         if (it.currentUser != null) {
-            //check if user have been logged already
-            //TODO create a redirection if user is logged in
-            Toast.makeText(context, FirebaseAuth.getInstance().currentUser?.email, Toast.LENGTH_LONG
-            ).show()
+            Navigation.findNavController((activity as MainActivity).findViewById(R.id.login_btn)).navigate(StartupFragmentDirections.actionStartupFragmentToProfileFragment())
         }
     }
 

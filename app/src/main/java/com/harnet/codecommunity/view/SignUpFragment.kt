@@ -52,7 +52,6 @@ class SignUpFragment : Fragment() {
 
         viewModel.mUserCreatedFailureMsg.observe(viewLifecycleOwner,{errorMsg ->
                 Toast.makeText(context, errorMsg, Toast.LENGTH_SHORT).show()
-                //TODO think about changing error message of failure field
         })
     }
 
@@ -90,14 +89,4 @@ class SignUpFragment : Fragment() {
 
         return result
     }
-
-//    override fun onStart() {
-//        super.onStart()
-//        viewModel.addFirebaseListener()
-//    }
-//
-//    override fun onStop() {
-//        super.onStop()
-//        viewModel.removeFirebaseListener()
-//    }
 }
