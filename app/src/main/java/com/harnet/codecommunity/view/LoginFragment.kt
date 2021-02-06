@@ -59,12 +59,12 @@ class LoginFragment : Fragment() {
         viewModel.mIsUserLoggedIn.observe(viewLifecycleOwner, {
             if (it) {
                 //TODO redirect to an another fragment after login
-                Toast.makeText(context, "User logged in", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "User logged in", Toast.LENGTH_LONG).show()
             }
         })
 
         viewModel.mUserLoggingFailureMsg.observe(viewLifecycleOwner, {errorMsg ->
-            Toast.makeText(context, errorMsg, Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, errorMsg, Toast.LENGTH_LONG).show()
         })
     }
 
