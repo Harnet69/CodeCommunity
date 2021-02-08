@@ -62,4 +62,16 @@ class FirebaseHelper {
         }
     }
 
+    fun logIn(mIsUserLoggedIn: MutableLiveData<Boolean>, mUserLoggingFailureMsg: MutableLiveData<String>,
+              userEmail: String, userPsw: String){
+        FirebaseAuth.getInstance().signInWithEmailAndPassword(userEmail, userPsw)
+            .addOnCompleteListener {task ->
+                if(task.isSuccessful){
+                    mIsUserLoggedIn.value = true
+                }else{
+                    mUserLoggingFailureMsg.value = task.exception?.localizedMessage.toString()
+                }
+            }
+    }
+
 }
