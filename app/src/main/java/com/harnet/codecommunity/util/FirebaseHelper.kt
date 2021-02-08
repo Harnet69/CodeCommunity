@@ -36,8 +36,8 @@ class FirebaseHelper {
     }
 
     // create new user
-    fun createUser(mIsUserCreated: MutableLiveData<Boolean>, mUserCreatedFailureMsg: MutableLiveData<String>,
-                   userEmail: String, userPsw: String) {
+    fun sighUp(mIsUserCreated: MutableLiveData<Boolean>, mUserCreatedFailureMsg: MutableLiveData<String>,
+               userEmail: String, userPsw: String) {
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(userEmail, userPsw)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
