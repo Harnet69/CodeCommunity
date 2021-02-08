@@ -12,6 +12,7 @@ import androidx.navigation.Navigation
 import com.harnet.codecommunity.R
 import com.harnet.codecommunity.databinding.SignUpFragmentBinding
 import com.harnet.codecommunity.di.DaggerFormValidatorHelperComponent
+import com.harnet.codecommunity.util.FirebaseHelper
 import com.harnet.codecommunity.util.FormValidationHelper
 import com.harnet.codecommunity.viewModel.SignUpViewModel
 import javax.inject.Inject

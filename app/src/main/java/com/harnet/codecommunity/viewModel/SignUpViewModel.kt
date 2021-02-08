@@ -13,31 +13,8 @@ class SignUpViewModel : ViewModel() {
     //TODO Inject it instead of instantiate
     val firebaseHelper = FirebaseHelper()
 
-    // create new user
+    // create a new user
     fun createUser(userEmail: String, userPsw: String) {
-        FirebaseAuth.getInstance().createUserWithEmailAndPassword(userEmail, userPsw)
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-//                    addUserToUsersDb()
-                    firebaseHelper.addUserToUsersDb()
-                    mIsUserCreated.value = true
-                } else {
-                    mUserCreatedFailureMsg.value = task.exception?.localizedMessage.toString()
-                }
-            }
-    }
-
-    //TODO think about moving it to Firebase helper
-    fun addUserToUsersDb() {
-        val currentUser = FirebaseAuth.getInstance().currentUser
-        val user = User(currentUser?.uid, "", "", currentUser?.email, "")
-        // record user to users
-        currentUser?.uid.let {
-            currentUser?.uid?.let { it1 ->
-                FirebaseDatabase.getInstance().reference.child("users").child(
-                    it1
-                ).setValue(user)
-            }
-        }
+        firebaseHelper.createUser(mIsUserCreated, mUserCreatedFailureMsg, userEmail, userPsw)
     }
 }

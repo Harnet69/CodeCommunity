@@ -1,6 +1,7 @@
 package com.harnet.codecommunity.util
 
 import android.util.Log
+import androidx.lifecycle.MutableLiveData
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database
@@ -34,9 +35,23 @@ class FirebaseHelper {
         return false
     }
 
-    fun addUserToUsersDb() {
-        val currentUserId = FirebaseAuth.getInstance().currentUser?.uid ?: ""
-        val user = User(currentUserId, "", "", "", "")
+    // create new user
+    fun createUser(mIsUserCreated: MutableLiveData<Boolean>, mUserCreatedFailureMsg: MutableLiveData<String>,
+                   userEmail: String, userPsw: String) {
+        FirebaseAuth.getInstance().createUserWithEmailAndPassword(userEmail, userPsw)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    addUserToUsersDb()
+                    mIsUserCreated.value = true
+                } else {
+                    mUserCreatedFailureMsg.value = task.exception?.localizedMessage.toString()
+                }
+            }
+    }
+
+    private fun addUserToUsersDb() {
+        val currentUser = FirebaseAuth.getInstance().currentUser
+        val user = User(currentUser?.uid, "", "", currentUser?.email, "")
         user.uid?.let { database.child(USERS).child(it).setValue(user)
             .addOnSuccessListener {
                 Log.i("currentUser", "addUserToUsersDb: Success")
