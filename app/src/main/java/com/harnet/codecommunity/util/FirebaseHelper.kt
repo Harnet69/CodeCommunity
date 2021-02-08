@@ -74,4 +74,9 @@ class FirebaseHelper {
             }
     }
 
+    fun logOut(mIsUserLogged: MutableLiveData<Boolean>){
+        firebaseAuth.signOut()
+        mIsUserLogged.value = false
+    }
+
 }
