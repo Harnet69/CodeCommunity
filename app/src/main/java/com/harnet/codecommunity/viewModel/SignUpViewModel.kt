@@ -12,6 +12,6 @@ class SignUpViewModel : ViewModel() {
 
     // create a new user
     fun signUp(userEmail: String, userPsw: String) {
-        firebaseHelper.sighUp(mIsUserCreated, mUserCreatedFailureMsg, userEmail, userPsw)
+        firebaseHelper.signUp(mIsUserCreated, mUserCreatedFailureMsg, userEmail, userPsw)
     }
 }

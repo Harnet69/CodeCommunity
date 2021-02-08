@@ -1,35 +1,32 @@
 package com.harnet.codecommunity.util
 
 import android.util.Log
-import android.view.View
 import androidx.lifecycle.MutableLiveData
-import androidx.navigation.Navigation
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
-import com.harnet.codecommunity.R
 import com.harnet.codecommunity.model.User
-import com.harnet.codecommunity.view.MainActivity
-import com.harnet.codecommunity.view.StartupFragmentDirections
 
-class FirebaseHelper {
+class FirebaseHelper : DatabaseHelper {
     private val USERS = "users"
     private var database = Firebase.database.reference
     private var firebaseAuth = FirebaseAuth.getInstance()
 
     // create new user
-    fun sighUp(
-        mIsUserCreated: MutableLiveData<Boolean>, mUserCreatedFailureMsg: MutableLiveData<String>,
-        userEmail: String, userPsw: String
+    @Suppress("PARAMETER_NAME_CHANGED_ON_OVERRIDE")
+    override fun signUp(
+        isSignedUp: MutableLiveData<Boolean>,
+        mFailureMsg: MutableLiveData<String>,
+        login: String,
+        password: String
     ) {
-        FirebaseAuth.getInstance().createUserWithEmailAndPassword(userEmail, userPsw)
+        FirebaseAuth.getInstance().createUserWithEmailAndPassword(login, password)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     addUserToUsersDb()
-                    mIsUserCreated.value = true
+                    isSignedUp.value = true
                 } else {
-                    mUserCreatedFailureMsg.value = task.exception?.localizedMessage.toString()
+                    mFailureMsg.value = task.exception?.localizedMessage.toString()
                 }
             }
     }
@@ -47,8 +44,8 @@ class FirebaseHelper {
                 }
         }
     }
-
-    fun logIn(
+    @Suppress("PARAMETER_NAME_CHANGED_ON_OVERRIDE")
+    override fun logIn(
         mIsUserLoggedIn: MutableLiveData<Boolean>, mUserLoggingFailureMsg: MutableLiveData<String>,
         userEmail: String, userPsw: String
     ) {
@@ -61,10 +58,9 @@ class FirebaseHelper {
                 }
             }
     }
-
-    fun logOut(mIsUserLogged: MutableLiveData<Boolean>) {
+    @Suppress("PARAMETER_NAME_CHANGED_ON_OVERRIDE")
+    override fun logOut(isLoggedIn: MutableLiveData<Boolean>) {
         firebaseAuth.signOut()
-        mIsUserLogged.value = false
+        isLoggedIn.value = false
     }
-
 }
