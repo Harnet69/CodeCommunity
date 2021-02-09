@@ -45,6 +45,7 @@ class FirebaseHelper @Inject constructor(): DatabaseHelper {
                 }
         }
     }
+
     @Suppress("PARAMETER_NAME_CHANGED_ON_OVERRIDE")
     override fun logIn(
         mIsUserLoggedIn: MutableLiveData<Boolean>, mUserLoggingFailureMsg: MutableLiveData<String>,
@@ -59,6 +60,7 @@ class FirebaseHelper @Inject constructor(): DatabaseHelper {
                 }
             }
     }
+
     @Suppress("PARAMETER_NAME_CHANGED_ON_OVERRIDE")
     override fun logOut(isLoggedIn: MutableLiveData<Boolean>) {
         firebaseAuth.signOut()

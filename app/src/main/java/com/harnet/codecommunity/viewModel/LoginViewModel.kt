@@ -2,7 +2,6 @@ package com.harnet.codecommunity.viewModel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.google.firebase.auth.FirebaseAuth
 import com.harnet.codecommunity.di.DaggerFirebaseHelperComponent
 import com.harnet.codecommunity.util.FirebaseHelper
 import javax.inject.Inject
