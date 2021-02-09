@@ -6,8 +6,9 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.harnet.codecommunity.model.User
+import javax.inject.Inject
 
-class FirebaseHelper : DatabaseHelper {
+class FirebaseHelper @Inject constructor(): DatabaseHelper {
     private val USERS = "users"
     private var database = Firebase.database.reference
     private var firebaseAuth = FirebaseAuth.getInstance()
