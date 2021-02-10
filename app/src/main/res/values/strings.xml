@@ -9,4 +9,5 @@
     <string name="hint_email">E-mail</string>
     <string name="user_signup_confirm_password">Confirm password</string>
     <string name="btn_logout_text">Log out</string>
+    <string name="standard_background">Standard background</string>
 </resources>
