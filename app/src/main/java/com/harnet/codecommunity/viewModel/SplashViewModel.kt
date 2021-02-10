@@ -27,7 +27,7 @@ class SplashViewModel : ViewModel() {
         }
     }
 
-    fun rotateImg(imageView: ImageView) {
+    private fun rotateImg(imageView: ImageView) {
         val animSet = AnimationSet(true)
         animSet.interpolator = DecelerateInterpolator()
         animSet.fillAfter = true

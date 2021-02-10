@@ -7,7 +7,7 @@
     tools:context=".view.SplashFragment">
 
     <ImageView
-        android:id="@+id/brg"
+        style="@style/StandardBgr"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:src="@drawable/splash_bgr"
@@ -15,8 +15,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/logo"
         app:layout_constraintTop_toTopOf="parent"
-        android:alpha="0.5"
-        android:scaleType="centerCrop"/>
+        />
 
     <ImageView
         android:id="@+id/logo"

@@ -27,4 +27,9 @@
         <item name="android:foreground">?attr/selectableItemBackground</item>
         <item name="android:clickable">true</item>
     </style>
+
+    <style name="StandardBgr">
+        <item name="android:alpha">0.5</item>
+        <item name="android:scaleType">centerCrop</item>
+    </style>
 </resources>
