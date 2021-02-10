@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/startupFragment">
+    app:startDestination="@id/splashFragment3">
 
     <fragment
         android:id="@+id/techsChooserFragment"
@@ -50,6 +50,15 @@
         tools:layout="@layout/profile_fragment" >
         <action
             android:id="@+id/action_profileFragment_to_startupFragment"
+            app:destination="@id/startupFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/splashFragment3"
+        android:name="com.harnet.codecommunity.view.SplashFragment"
+        android:label="splash_fragment"
+        tools:layout="@layout/splash_fragment" >
+        <action
+            android:id="@+id/action_splashFragment3_to_startupFragment"
             app:destination="@id/startupFragment" />
     </fragment>
 </navigation>
