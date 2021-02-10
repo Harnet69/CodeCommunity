@@ -21,6 +21,8 @@ class StartupFragment : Fragment() {
         //check if user have been logged already
         if (it.currentUser != null) {
             Navigation.findNavController((activity as MainActivity).findViewById(R.id.login_btn)).navigate(StartupFragmentDirections.actionStartupFragmentToProfileFragment())
+        }else{
+            dataBinding.startupBlock.visibility = View.VISIBLE
         }
     }
 
@@ -37,6 +39,8 @@ class StartupFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         onLogin()
         onSignUp()
+//        if(firebaseAuth.currentUser != null){
+//        }
     }
 
     private fun onLogin(){

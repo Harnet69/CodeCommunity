@@ -6,6 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".view.MainActivity">
 
+    <ImageView
+        style="@style/StandardBgr"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/splash_bgr"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/logo"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
     <fragment
         android:id="@+id/fragments"
         android:name="androidx.navigation.fragment.NavHostFragment"
