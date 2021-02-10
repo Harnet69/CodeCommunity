@@ -53,15 +53,8 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/signUp_btn_signUp"
             style="@style/StandardBtn"
-            app:cornerRadius="@dimen/btn_standard_radius"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:layout_gravity="end"
-            android:layout_marginEnd="10dp"
-            android:text="@string/btn_signUp_text"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/userPassword_signUp"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:text="@string/btn_signUp_text"/>
 
     </LinearLayout>
 

@@ -8,9 +8,7 @@
 
     <ImageView
         android:id="@+id/logo"
-        android:layout_width="@dimen/startup_logo_width"
-        android:layout_height="@dimen/startup_logo_height"
-        android:src="@drawable/code_community"
+        style="@style/StandardLogo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
