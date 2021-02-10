@@ -22,7 +22,7 @@ class SplashFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        viewModel.redirect(view)
+//        viewModel.rotateImg(view.findViewById(R.id.logo))
+        viewModel.redirect(view.findViewById(R.id.logo))
     }
 }
