@@ -17,6 +17,18 @@
         <item name="windowActionBar">false</item>
     </style>
 
+    <!-- Standard logo -->
+    <style name="StandardLogo">
+        <item name="android:layout_width">175dp</item>
+        <item name="android:layout_height">150dp</item>
+        <item name="android:layout_margin">70dp</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:src">@drawable/code_community</item>
+        <item name="layout_constraintEnd_toEndOf">parent</item>
+        <item name="layout_constraintStart_toStartOf">parent</item>
+        <item name="layout_constraintTop_toTopOf">parent</item>
+    </style>
+
     <!-- Standard button -->
     <style name="StandardBtn">
         <item name="background">@drawable/standard_btn_rounded</item>

@@ -8,11 +8,14 @@
         android:id="@+id/signUp_block"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/standard_block_margin"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            style="@style/StandardLogo"
+            android:contentDescription="@string/startup_app_logo_descr"/>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/userEmail_signUp"

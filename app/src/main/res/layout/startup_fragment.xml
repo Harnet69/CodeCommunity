@@ -20,15 +20,8 @@
             tools:context=".view.StartupFragment">
 
             <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="@dimen/startup_logo_width"
-                android:layout_height="@dimen/startup_logo_height"
-                android:layout_margin="@dimen/startup_logo_margin"
-                android:contentDescription="@string/startup_app_logo"
-                android:src="@drawable/code_community"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                style="@style/StandardLogo"
+                android:contentDescription="@string/startup_app_logo_descr"/>
 
             <Button
                 android:id="@+id/login_btn"
