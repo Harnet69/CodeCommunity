@@ -22,7 +22,7 @@ class SplashViewModel : ViewModel() {
             delay(duration)
             coroutineScope.launch(Dispatchers.Main) {
                 Navigation.findNavController(imageView)
-                    .navigate(SplashFragmentDirections.actionSplashFragment3ToStartupFragment())
+                    .navigate(SplashFragmentDirections.actionSplashFragment3ToViewPagerFragment())
             }
         }
     }

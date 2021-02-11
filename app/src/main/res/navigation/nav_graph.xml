@@ -58,8 +58,12 @@
         android:label="splash_fragment"
         tools:layout="@layout/splash_fragment" >
         <action
-            android:id="@+id/action_splashFragment3_to_startupFragment"
-            app:destination="@id/startupFragment"
-            app:exitAnim="@anim/fragment_fade_exit" />
+            android:id="@+id/action_splashFragment3_to_viewPagerFragment"
+            app:destination="@id/viewPagerFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/viewPagerFragment"
+        android:name="com.harnet.codecommunity.view.onboarding.ViewPagerFragment"
+        android:label="fragment_view_pager"
+        tools:layout="@layout/fragment_view_pager" />
 </navigation>
